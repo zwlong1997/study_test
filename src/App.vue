@@ -1,26 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Demo @hello="showHelloMsg" msg="您好啊" place="琶洲">
+    <template v-slot:my>
+      <span>展会中心</span>
+    </template>
+  </Demo>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Demo from "./components/Demo.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Demo,
+  },
+  setup() {
+    function showHelloMsg(value) {
+      alert(`您好啊，你触发了hello事件，我收到的参数是：${value}!`);
+    }
+    return {
+      showHelloMsg,
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
